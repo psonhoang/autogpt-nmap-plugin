@@ -12,7 +12,7 @@ class Message(TypedDict):
     content: str
 
 
-class AutoGPTPluginTemplate(AbstractSingleton, metaclass=Singleton):
+class AutoGPTNmapPlugin(AbstractSingleton, metaclass=Singleton):
     """
     This is a template for Auto-GPT plugins.
     """
@@ -57,7 +57,19 @@ class AutoGPTPluginTemplate(AbstractSingleton, metaclass=Singleton):
         Returns:
             PromptGenerator: The prompt generator.
         """
-        pass
+
+        from .nmap_plugin.nmap_plugin import (
+            scan
+        )
+
+        prompt.add_command(
+            "Scan ports for",
+            "scan_ports_for",
+            {'target': '<target>'},
+            scan,
+        )
+
+        return prompt
 
     @abc.abstractmethod
     def can_handle_on_planning(self) -> bool:
@@ -255,7 +267,7 @@ class AutoGPTPluginTemplate(AbstractSingleton, metaclass=Singleton):
           Returns:
               bool: True if the plugin can handle the text_embedding method."""
         return False
-    
+
     @abc.abstractmethod
     def handle_text_embedding(
         self, text: str

@@ -19,9 +19,9 @@ class AutoGPTNmapPlugin(AbstractSingleton, metaclass=Singleton):
 
     def __init__(self):
         super().__init__()
-        self._name = "Auto-GPT-Plugin-Template"
+        self._name = "Auto-GPT-NmapPlugin"
         self._version = "0.1.0"
-        self._description = "This is a template for Auto-GPT plugins."
+        self._description = "A simple plugin wrapped around python-nmap to scan ports"
 
     @abc.abstractmethod
     def can_handle_on_response(self) -> bool:

@@ -3,7 +3,7 @@ import nmap
 scanner = nmap.PortScanner()
 
 
-def scan(target: str):
+def scan_ports_for(target: str):
     # Scan target for ports in the range 1-65535
     nmScan.scan(target, arguments='-p 1-65535')
     result = []

@@ -41,7 +41,7 @@ class AutoGPTNmapPlugin(AutoGPTPluginTemplate):
 
         Returns:
             bool: True if the plugin can handle the post_prompt method."""
-        return False
+        return True
 
     def post_prompt(self, prompt: PromptGenerator) -> PromptGenerator:
         """This method is called just after the generate_prompt is called,
@@ -55,14 +55,14 @@ class AutoGPTNmapPlugin(AutoGPTPluginTemplate):
         """
 
         from .nmap_plugin.nmap_plugin import (
-            scan
+            scan_ports_for
         )
 
         prompt.add_command(
             "Scan ports for",
             "scan_ports_for",
             {'target': '<target>'},
-            scan,
+            scan_ports_for,
         )
 
         return prompt

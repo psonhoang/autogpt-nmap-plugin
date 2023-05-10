@@ -2,7 +2,7 @@
 import abc
 from typing import Any, Dict, List, Optional, Tuple, TypeVar, TypedDict
 
-from abstract_singleton import AbstractSingleton, Singleton
+from auto_gpt_plugin_template import AutoGPTPluginTemplate
 
 PromptGenerator = TypeVar("PromptGenerator")
 
@@ -12,7 +12,7 @@ class Message(TypedDict):
     content: str
 
 
-class AutoGPTNmapPlugin(AbstractSingleton, metaclass=Singleton):
+class AutoGPTNmapPlugin(AutoGPTPluginTemplate):
     """
     This is a template for Auto-GPT plugins.
     """

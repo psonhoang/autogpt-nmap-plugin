@@ -8,3 +8,4 @@ setuptools
 build
 twine
 python-nmap
+auto_gpt_plugin_template
